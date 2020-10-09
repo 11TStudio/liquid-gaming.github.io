@@ -24,7 +24,7 @@
               </v-card-title>
               <v-data-table
                 :headers="headers"
-                :items="itemsWithIndex"
+                :items="formatJson"
                 :search="search"
                 item-key="name"
                 sort-by="Kills"
@@ -35,6 +35,11 @@
                   lastIcon: 'mdi-arrow-collapse-right',
                   'items-per-page-options': [10, 25, 50, 100]
                 }">
+                <template v-slot:[`item.Badges`]="{ item }">
+                  <v-chip v-if="item.Badges != null" :color="getColor(item.Name)">
+                    {{item.Badges}}
+                  </v-chip>
+                </template>
                 </v-data-table>
             </v-card>
           </v-col>
@@ -71,19 +76,42 @@ export default {
           { text: 'K/D', value: 'KD' },
           { text: 'Wounds', value: 'Wounds' },
           { text: 'Revives', value: 'Revives' },
+          { text: 'Badges', value: 'Badges', sortable: false },
         ],
         players: topStats.sort((a, b) => parseFloat(b.Kills) - parseFloat(a.Kills))
       }
   },
   computed: {
-    itemsWithIndex() {
+    formatJson() {
+      this.assignBadges(this.players);
       return this.players.map(
         (players, index) => ({
           ...players,
           index: index + 1
         }))
     }
-  }
+  },
+  methods: {
+    assignBadges(players){
+      let topKills = Math.max.apply(Math, players.map(function(o){return o.Kills}));
+      players.forEach(function(e){
+        if (typeof e === "object" ){
+          e["Badges"] = [{}]
+        }
+      });
+      
+      for (var i = 0; i < players.length; i++) {
+        if (players[i]['Kills'] == topKills) {          
+          players[i]['Badges'] = 'Top Kill Count';
+          console.log('top kd')
+        }
+      }
+    },
+    getColor (name) {
+      if (name === "『LiQ』ArchRevenant") return '#DAA520'
+      else return ''
+    },
+  },
 };
 </script>
 
