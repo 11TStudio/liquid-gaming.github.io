@@ -8,7 +8,7 @@
       <v-layout fill-height align-center>
           <v-container>
             <v-row align="center" justify="center" class="white--text">
-              <v-col cols="12">
+              <v-col cols="6">
                 <div :class="{'display-4 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}">
                   LiQuid Gaming
                 </div>
@@ -17,8 +17,11 @@
                   We currently host two servers in Squad and have plan for more in the future. <br/>
                   <br/>
                   We are eager to help new or returning players rediscover their passion for gaming. <br/>
-                  Please scroll down and take a look, we would love for you to join us! <br/>
+                  Please scroll down and take a look, we would love for you to join us! <br/>                  
                 </div>
+              </v-col>
+              <v-col cols="6">
+                <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
               </v-col>
             </v-row>
           </v-container>
@@ -148,6 +151,7 @@ export default {
       firstCarousel: null,
       secondCarousel: null,
       thirdCarousel: null,
+      videoId: '_CY7zd9Ep-M'
     };
   },
   methods: {
@@ -166,6 +170,17 @@ export default {
         homePageImageJson.push(addImage)
       });
       return homePageImageJson;
+    },
+    playVideo() {
+      this.player.playVideo()
+    },
+    playing() {
+      console.log('we are watching!!!')
+    }
+  },
+  computed: {
+    player() {
+      return this.$refs.youtube.player
     }
   },
   mounted() {

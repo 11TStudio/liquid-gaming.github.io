@@ -5,6 +5,9 @@ import VueAnalytics from 'vue-analytics';
 import vuetify from './plugins/vuetify';
 import VueLazyload from 'vue-lazyload'
 
+import VueYoutube from 'vue-youtube'
+ 
+Vue.use(VueYoutube)
 Vue.use(VueLazyload)
 Vue.config.productionTip = false
 Vue.use(VueAnalytics, {
