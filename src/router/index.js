@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Seeding from '../views/Seeding.vue'
 import PlayerStats from '../views/PlayerStats.vue'
+import Media from '../views/Media.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ export default new VueRouter({
       path: '/playerstats',
       name: 'Player Stats',
       component: PlayerStats
+    },
+    {
+      path: '/media',
+      name: 'Media',
+      component: Media
     },
     {
       path: '/discord',

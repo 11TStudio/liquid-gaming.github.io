@@ -76,6 +76,7 @@ export default {
         // { title: 'Contact', icon: 'connect_without_contact', route: '' },
         { title: 'Seeding', icon: 'trending_up', route: '/seeding' },
         { title: 'Player Stats', icon: 'leaderboard', route: '/playerstats' },
+        { title: 'Media', icon: 'videocam', route: '/media' },
         { title: 'Discord', icon: 'mdi-discord', route: '/discord' },
         { title: 'Merchandise', icon: 'shopping_cart', route: '/merch' }
       ],

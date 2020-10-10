@@ -8,7 +8,7 @@
       <v-layout fill-height align-center>
           <v-container>
             <v-row align="center" justify="center" class="white--text">
-              <v-col cols="6">
+              <v-col cols="12">
                 <div :class="{'display-4 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}">
                   LiQuid Gaming
                 </div>
@@ -20,9 +20,6 @@
                   Please scroll down and take a look, we would love for you to join us! <br/>                  
                 </div>
               </v-col>
-              <v-col cols="6">
-                <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
-              </v-col>
             </v-row>
           </v-container>
         </v-layout>
@@ -33,7 +30,7 @@
         </v-card>
       </v-container>
       <v-parallax height="350" :src="firstCarousel" id="home-image"></v-parallax>
-    <v-container class="mt-5 dark black--background compontent-container">    
+    <v-container class="mt-5 dark black--background compontent-container" id="Servers">    
       <v-card :elevation="5" class="home-cards">
         <v-row align="center" justify="center">
           <v-container>
@@ -97,7 +94,7 @@
       </v-card>
     </v-container>
     <v-parallax height="350" :src="secondCarousel" id="home-image"></v-parallax>
-    <v-container class="mt-5 dark black--background" style="margin-bottom:20px;">
+    <v-container class="mt-5 dark black--background" style="margin-bottom:20px;" id="Recruitment">
       <Recruitment :stepsForRecruitment="stepsForRecruitment"/>
     </v-container>
      <v-parallax height="350" :src="thirdCarousel" id="home-image"></v-parallax>
@@ -150,8 +147,7 @@ export default {
       selectedHomeImage: null,
       firstCarousel: null,
       secondCarousel: null,
-      thirdCarousel: null,
-      videoId: '_CY7zd9Ep-M'
+      thirdCarousel: null
     };
   },
   methods: {
@@ -170,17 +166,6 @@ export default {
         homePageImageJson.push(addImage)
       });
       return homePageImageJson;
-    },
-    playVideo() {
-      this.player.playVideo()
-    },
-    playing() {
-      console.log('we are watching!!!')
-    }
-  },
-  computed: {
-    player() {
-      return this.$refs.youtube.player
     }
   },
   mounted() {
