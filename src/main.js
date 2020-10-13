@@ -4,10 +4,11 @@ import router from './router'
 import VueAnalytics from 'vue-analytics';
 import vuetify from './plugins/vuetify';
 import VueLazyload from 'vue-lazyload'
-
 import VueYoutube from 'vue-youtube'
+import VueNumber from 'vue-number-animation'
  
 Vue.use(VueYoutube)
+Vue.use(VueNumber)
 Vue.use(VueLazyload)
 Vue.config.productionTip = false
 Vue.use(VueAnalytics, {
