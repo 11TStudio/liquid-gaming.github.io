@@ -68,7 +68,7 @@ export default {
       return{
         mediaLinks: mediaLinks,
         videoId: mediaLinks.find(o=>{return o.name === "liqTrailerVideo";}).link,
-        twitchChannels: ['appache1', 'AdmiralMaul', 'budgeuk01', 'iamnyxtv', 'nemzZ', 'rossburger', 'mitron43', 'Scappow', 'frenchcanadian04'],
+        twitchChannels: ['appache1', 'AdmiralMaul', 'budgeuk01', 'iamnyxtv', 'nemzZ', 'rossburger', 'mitron43', 'Scappow', 'frenchcanadian04', 'itsrowdytv'],
         youtubeChannels:['mitron43', 'FrenchCanadian', 'Vill_chip', 'OpticalRings'],
         model: null
       }
