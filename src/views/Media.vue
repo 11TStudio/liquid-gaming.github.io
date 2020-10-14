@@ -58,6 +58,8 @@ import VueTwitchPlayer from 'vue-twitch-player';
 
 //Json files
 import mediaLinks from "@/assets/json/mediaLinks.json"
+import twitchChannels from "@/assets/json/twitchChannels.json"
+import youtubeChannels from "@/assets/json/youtubeChannels.json"
 
 export default {
   name: "media",
@@ -68,8 +70,8 @@ export default {
       return{
         mediaLinks: mediaLinks,
         videoId: mediaLinks.find(o=>{return o.name === "liqTrailerVideo";}).link,
-        twitchChannels: ['appache1', 'AdmiralMaul', 'budgeuk01', 'frenchcanadian04', 'iamnyxtv', 'itsrowdytv', 'mitron43', 'nemzZ', 'rossburger', 'Scappow', 'thearchrevenant'],
-        youtubeChannels:['mitron43', 'FrenchCanadian', 'Vill_chip', 'OpticalRings'],
+        twitchChannels: twitchChannels,
+        youtubeChannels: youtubeChannels,
         model: null
       }
   },
