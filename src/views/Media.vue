@@ -1,13 +1,52 @@
 <template>
   <div class="home background-image">
     <v-container >
-      <v-card class="seeding-card">
-        <v-row align="left" justify="left">
-            
-              <v-col cols="6">
-                <youtube :video-id="videoId" ref="youtube" @playing="playing"></youtube>
-              </v-col>        
-        </v-row>
+      <v-card class="media-card">
+        <v-layout row wrap class="justify-center">
+            <youtube :video-id="videoId" ref="youtube" @playing="playing" :resize="true" :width="1280" :height="720"></youtube>
+        </v-layout>
+        <!-- <v-container class="my-2">
+          <v-card>
+            <v-card style="background-color:#141414;padding:15px !important;text-align:center;" class="shadow">
+              <div :class="{'display-3 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}" 
+                    :style="{'height:100px': $vuetify.breakpoint.smAndUp, 'height:200px': $vuetify.breakpoint.smAndDown}" >
+                Featured Youtube Channels
+              </div>
+            </v-card>
+            <v-card style="background-color:#1c1c1c;padding:15px !important;">
+              <v-layout row wrap class="justify-center">
+                <v-flex xs12 sm12 md6 lg5 xl3  v-for="(channel, index) in youtubeChannels" :key="index">
+                <v-hover v-slot:default="{ hover }">
+                    <v-card class="text-xs-center ma-2" :elevation="hover ? 5 : 2" style="text-align: center;">
+                      
+                    </v-card>
+                </v-hover>
+                </v-flex>
+              </v-layout>
+            </v-card>
+          </v-card>
+        </v-container> -->
+        <v-container class="my-2">
+          <v-card>
+            <v-card style="background-color:#141414;padding:15px !important;text-align:center;">
+              <div :class="{'display-3 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}" 
+                    :style="{'height:100px': $vuetify.breakpoint.smAndUp, 'height:200px': $vuetify.breakpoint.smAndDown}" >
+                Featured Twitch Channels
+              </div>
+            </v-card>
+            <v-card style="background-color:#1c1c1c;padding:15px !important;">
+              <v-layout row wrap class="justify-center">
+                <v-flex xs12 sm12 md6 lg5 xl3  v-for="(channel, index) in twitchChannels" :key="index">
+                <v-hover v-slot:default="{ hover }">
+                    <v-card class="text-xs-center ma-2" :elevation="hover ? 5 : 2" style="text-align: center;">
+                      <VueTwitchPlayer :channel="channel" />
+                    </v-card>
+                </v-hover>
+                </v-flex>
+              </v-layout>
+            </v-card>
+          </v-card>
+        </v-container>
       </v-card>
     </v-container>
   </div>
@@ -15,15 +54,23 @@
 
 <script>
 // @ is an alias to /src
+import VueTwitchPlayer from 'vue-twitch-player';
+
 //Json files
 import mediaLinks from "@/assets/json/mediaLinks.json"
 
 export default {
-  name: "seeding",
+  name: "media",
+  components: {
+    VueTwitchPlayer
+  },
   data(){
       return{
         mediaLinks: mediaLinks,
         videoId: mediaLinks.find(o=>{return o.name === "liqTrailerVideo";}).link,
+        twitchChannels: ['appache1', 'AdmiralMaul', 'budgeuk01', 'iamnyxtv', 'nemzZ', 'rossburger', 'mitron43', 'Scappow', 'frenchcanadian04'],
+        youtubeChannels:['mitron43', 'FrenchCanadian', 'Vill_chip', 'OpticalRings'],
+        model: null
       }
   },
   methods:{
@@ -43,7 +90,7 @@ export default {
 </script>
 
 <style lang="css">
-  .seeding-card{
+  .media-card{
     border-radius: 20px !important;
     margin-top: 75px !important;
     padding:35px !important; 

@@ -6,7 +6,9 @@ import vuetify from './plugins/vuetify';
 import VueLazyload from 'vue-lazyload'
 import VueYoutube from 'vue-youtube'
 import VueNumber from 'vue-number-animation'
- 
+import LoadScript from 'vue-plugin-load-script';
+
+Vue.use(LoadScript);
 Vue.use(VueYoutube)
 Vue.use(VueNumber)
 Vue.use(VueLazyload)
