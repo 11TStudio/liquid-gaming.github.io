@@ -5,7 +5,9 @@ import VueAnalytics from 'vue-analytics';
 import vuetify from './plugins/vuetify';
 import VueLazyload from 'vue-lazyload'
 import VueNumber from 'vue-number-animation'
- 
+import VueParticles from 'vue-particles'
+
+Vue.use(VueParticles)
 Vue.use(VueNumber)
 Vue.use(VueLazyload)
 Vue.config.productionTip = false

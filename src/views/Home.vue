@@ -1,28 +1,45 @@
 <template>
-  <div class="home background-image" id="Home">
+  <div class="home background-image" id="Home">    
     <v-parallax
       height="950"
       :src="selectedHomeImage"
-      id="home-image"
-    >
-      <v-layout fill-height align-center>
-          <v-container>
-            <v-row align="center" justify="center" class="white--text">
-              <v-col cols="12">
-                <div :class="{'display-4 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}">
-                  LiQuid Gaming
-                </div>
-                <div :class="{'subtitle-1': $vuetify.breakpoint.smAndDown}" class="home-text">
-                  We are a high-level clan in various gaming platforms with a community of over 900 players. <br/>
-                  We currently host two servers in Squad and have plan for more in the future. <br/>
-                  <br/>
-                  We are eager to help new or returning players rediscover their passion for gaming. <br/>
-                  Please scroll down and take a look, we would love for you to join us! <br/>
-                </div>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-layout>
+      id="home-image">
+      <vue-particles
+      v-if="$vuetify.breakpoint.lgAndUp"
+      color="#dedede"
+      :particleOpacity="0.7"
+      :particlesNumber="80"
+      shapeType="circle"
+      :particleSize="4"
+      linesColor="#dedede"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="3.5"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push">
+    </vue-particles>
+      <v-layout fill-height align-center style="position: absolute;">
+        <v-container>
+          <v-row align="center" justify="center" class="white--text">
+            <v-col cols="12">
+              <div :class="{'display-4 font-weight-bold ': $vuetify.breakpoint.smAndUp, 'display-2 font-weight-bold': $vuetify.breakpoint.smAndDown}">
+                LiQuid Gaming
+              </div>
+              <div :class="{'subtitle-1': $vuetify.breakpoint.smAndDown}" class="home-text">
+                We are a high-level clan in various gaming platforms with a community of over 900 players. <br/>
+                We currently host two servers in Squad and have plan for more in the future. <br/>
+                <br/>
+                We are eager to help new or returning players rediscover their passion for gaming. <br/>
+                Please scroll down and take a look, we would love for you to join us! <br/>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-layout>
     </v-parallax>
       <v-container class="mt-5 dark black--background compontent-container" id="About">        
         <v-card :elevation="5" class="home-cards">
